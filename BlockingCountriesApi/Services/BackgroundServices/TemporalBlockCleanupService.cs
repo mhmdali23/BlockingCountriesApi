@@ -22,7 +22,7 @@ namespace BlockingCountriesApi.Services.BackgroundServices
 
                 foreach (var block in expired)
                 {
-                    _temporalBlockRepository.Remove(block.CountryCode);
+                    _temporalBlockRepository.Remove(block.CountryCode.ToUpper());
                 }
                 await Task.Delay(TimeSpan.FromMinutes(5),stoppingToken);
             }

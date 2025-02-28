@@ -27,7 +27,7 @@ namespace BlockingCountriesApi.Controllers
             {
                 return BadRequest("Country code cannot be empty.");
             }
-            var result = _blockedCountryService.BlockCountry(blockCountryRequest.CountryCode);
+            var result = _blockedCountryService.BlockCountry(blockCountryRequest.CountryCode.ToUpper());
            
             return result.IsSuccess ? Ok() : Conflict("Country is already blocked");
         }
@@ -40,7 +40,7 @@ namespace BlockingCountriesApi.Controllers
             {
                 return BadRequest("Country code cannot be empty.");
             }
-            var result = _blockedCountryService.UnblockCountry(countryCode);
+            var result = _blockedCountryService.UnblockCountry(countryCode.ToUpper());
             return result.IsSuccess ? Ok() : NotFound("Country is not blocked");
         }
 
@@ -64,7 +64,7 @@ namespace BlockingCountriesApi.Controllers
             {
                 return BadRequest("Country code cannot be empty.");
             }
-            var result = _temporalBlockService.AddTemporalBlock(temporalBlockRequest.CountryCode, temporalBlockRequest.DurationMinutes);
+            var result = _temporalBlockService.AddTemporalBlock(temporalBlockRequest.CountryCode.ToUpper(), temporalBlockRequest.DurationMinutes);
             return result.IsSuccess ? Ok() : Conflict("Country is already temporarily blocked");
         }
 

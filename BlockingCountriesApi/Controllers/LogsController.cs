@@ -9,7 +9,7 @@ namespace BlockingCountriesApi.Controllers
     public class LogsController(LogService logService) : ControllerBase
     {
         [HttpGet("blocked-attempts")]
-        public IActionResult GetBlockedAttempts(string? searchTerm, int page, int pageSize)
+        public IActionResult GetBlockedAttempts(int page, int pageSize)
         {
             var result = logService.GetBlockedAttemptLogs(page, pageSize);
             return Ok(result);

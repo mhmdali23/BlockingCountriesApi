@@ -67,7 +67,8 @@ namespace BlockingCountriesApi.Controllers
 
             return Ok(new BlockCheckResponse
             {
-                IsBlocked = isBlocked
+                IsBlocked = isBlocked,
+                CountryCode = geoData.CountryCode,
             });
 
         }
